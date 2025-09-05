@@ -1,0 +1,7 @@
+config {
+  type: "assertion"
+}
+
+select *
+from ${ref("stg_training_events")}
+where user_id is null

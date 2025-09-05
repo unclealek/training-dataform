@@ -1,0 +1,15 @@
+config {
+  type: "table",
+  schema: "analytics"
+}
+
+select
+  event_date,
+  count(distinct user_id) as active_users,
+  countif(event_type = "completed_quiz") as quizzes_completed
+from
+  ${ref("stg_training_events")}
+group by
+  event_date
+order by
+  event_date desc
